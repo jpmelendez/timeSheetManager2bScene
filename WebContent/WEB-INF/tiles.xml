@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="baseLayout" template="/jsp/baseLayout.jsp">
+      <put-attribute name="headContent" value="/jsp/headerContent.jsp"/>
+      <put-attribute name="header" value="/jsp/header.jsp"/>
+      <put-attribute name="logout-button" value="/jsp/LogoutSection.jsp"/>
+      <put-attribute name="menu"   value=""/>
+      <put-attribute name="body"   value="/jsp/login.jsp"/>
+      <put-attribute name="footer"   value="/jsp/footer.jsp"/>
+  </definition>
+  
+  <definition name="loginTiles" template="/jsp/baseLayout.jsp">
+  	  <put-attribute name="headContent" value="/jsp/headerContent.jsp"/>
+      <put-attribute name="header" value="/jsp/header.jsp"/>
+      <put-attribute name="body"   value="/jsp/loginError.jsp"/>  
+      <put-attribute name="footer"   value="/jsp/footer.jsp"/>   
+  </definition>
+  
+  <definition name="loginError" template="/jsp/baseLayout.jsp">
+  	  <put-attribute name="headContent" value="/jsp/headerContent.jsp"/>
+      <put-attribute name="header" value="/jsp/header.jsp"/>
+      <put-attribute name="body" value="/jsp/loginError.jsp"/>
+      <put-attribute name="footer"   value="/jsp/footer.jsp"/>  
+  </definition>
+  
+  
+  <definition name="welcome" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/homeHeaderContent.jsp"/>
+      <put-attribute name="body"   value="/jsp/homeMain.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  
+  <definition name="home" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/homeHeaderContent.jsp"/>
+      <put-attribute name="body"   value="/jsp/homeMain.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  
+   <definition name="detailHome" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/homeHeaderContent.jsp"/>
+      <put-attribute name="body"   value="/jsp/DetailHomeActivity.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  
+  <!-- Module add/delete new Catalog Staff -->
+  <definition name="staff" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/catalogs/CatalogListStaffHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/catalogs/CatalogStaff.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  <definition name="newStaff" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/catalogs/CatalogStaffHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/catalogs/CatalogStaffCapture.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+   <definition name="staffEditForm" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/catalogs/CatalogStaffEditHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/catalogs/CatalogStaffEdit.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  
+   <!-- Module add/delete new Customers -->
+  <definition name="clientsList" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/catalogs/ClientsListHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/catalogs/ClientsList.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  
+  
+  <definition name="clientsForm" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/catalogs/ClientsHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/catalogs/Clients.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  
+  <definition name="clientsEditForm" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/catalogs/ClientsEditHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/catalogs/ClientsEdit.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  
+   <!-- Module ADD/delete new project Category -->
+  <definition name="categoriesList" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/catalogs/CategoryListHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/catalogs/CategoryList.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  
+  <definition name="categoriesForm" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/catalogs/CategoryHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/catalogs/Category.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  
+  <definition name="categoriesEditForm" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/catalogs/CategoryEditHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/catalogs/CategoryEdit.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  
+  <!-- Module ADD NEW PROJECT -->
+  <definition name="captureProject" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/mainProject/CaptureProjectHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/mainProject/CaptureProject.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  
+  <!-- Module Edit PROJECT -->
+  <definition name="projectEditForm" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/mainProject/EditProjectHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/mainProject/EditProject.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  
+  <!-- Module Show info after save or update -->
+  <definition name="showInfo" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/mainProject/ShowProjectHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/mainProject/ShowProject.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  
+   <!-- Module OVERVIEW PROJECTS -->
+  <definition name="overviewProjects" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/mainProject/ViewProjectsHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/mainProject/OverViewProjects.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  
+   <!-- Search General PROJECT -->
+   <definition name="searchGeneral" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/searchGeneral/searchGeneralHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/searchGeneral/searchGeneral.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>    
+  </definition>
+  
+  <!-- Module ADD/delete new Stages Catalog -->
+  <definition name="stages" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/catalogs/CatalogStagesListHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/catalogs/CatalogStagesList.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  <definition name="newStage" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/catalogs/CatalogNewStagesHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/catalogs/CatalogNewStages.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  <definition name="stageEditForm" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/catalogs/CatalogEditStageHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/catalogs/CatalogEditStage.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  
+  
+  <!-- Module ADD/delete new Tasks Catalog -->
+  <definition name="tasks" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/catalogs/CatalogTasksListHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/catalogs/CatalogTasksList.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  <definition name="newTask" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/catalogs/CatalogNewTaskHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/catalogs/CatalogNewTask.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  <definition name="taskEditForm" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/catalogs/CatalogEditTaskHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/catalogs/CatalogEditTask.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  
+  
+  <!-- Module ADD/delete new Activities Catalog -->
+   <definition name="activities" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/catalogs/CatalogActivitiesListHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/catalogs/CatalogActivitiesList.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  <definition name="newActivity" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/catalogs/CatalogNewActivityHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/catalogs/CatalogNewActivity.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  <definition name="activityEditForm" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/catalogs/CatalogEditActivityHead.jsp"/>
+      <put-attribute name="body"   value="/jsp/catalogs/CatalogEditActivity.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  
+  <!-- Module Search/ADD/edit/delete project's Tasks/Activities -->
+   <definition name="searchProjects" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/ProjectActivity/ProjectTasksSearchProjectHeaderC.jsp"/>
+      <put-attribute name="body"   value="/jsp/ProjectActivity/ProjectTasksSearchProject.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  <definition name="searchEditProjects" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/ProjectActivity/ProjectActivitySearchEditHeader.jsp"/>
+      <put-attribute name="body"   value="/jsp/ProjectActivity/ProjectActivitySearchEdit.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  <definition name="selectActivities" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/ProjectActivity/ProjectActivityHeaderContent.jsp"/>
+      <put-attribute name="body"   value="/jsp/ProjectActivity/ProjectActivity.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  <definition name="editListActivities" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/ProjectActivity/ProjectActivityEditListHeader.jsp"/>
+      <put-attribute name="body"   value="/jsp/ProjectActivity/ProjectActivityEditList.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  <definition name="errorProjectActivity" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/ProjectActivity/ProjectActivityHeaderContent.jsp"/>
+      <put-attribute name="body"   value="/jsp/ProjectActivity/ErrorProjectActivity.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  <definition name="editProjectActivity" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/ProjectActivity/ProjectActivityEditHeader.jsp"/>
+      <put-attribute name="body"   value="/jsp/ProjectActivity/ProjectActivityEdit.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  <definition name="updateProjectActivity" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/ProjectActivity/ProjectActivityUpdateHeader.jsp"/>
+      <put-attribute name="body"   value="/jsp/ProjectActivity/ProjectActivityUpdate.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  
+   <!-- Module project manager pages -->
+    <definition name="mainManagerPage" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/mainProject/MainProjectInformationHeader.jsp"/>
+      <put-attribute name="body"   value="/jsp/mainProject/MainInformationProject.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  
+   <!-- Module TimeSheet Manager -->
+  <definition name="timeSheetStart" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/timeTracking/TimeTrackingHomeHeader.jsp"/>
+      <put-attribute name="body"   value="/jsp/timeTracking/TimeTrackingHome.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  <definition name="timeSheetListActivities" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/timeTracking/TrackingActivityListHeader.jsp"/>
+      <put-attribute name="body"   value="/jsp/timeTracking/TrackingActivityList.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  <definition name="timeSheetSubmitForm" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/timeTracking/TimeSheetFormSubmitHeader.jsp"/>
+      <put-attribute name="body"   value="/jsp/timeTracking/TimeSheetFormSubmit.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  <definition name="timeSheetTimeList" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/timeTracking/TimeSheetListHeader.jsp"/>
+      <put-attribute name="body"   value="/jsp/timeTracking/TimeSheetList.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  <definition name="timeSheetTimeDay" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/timeTracking/TimeTrackingHomeHeader.jsp"/>
+      <put-attribute name="body"   value="/jsp/timeTracking/TimeTrackingPerDay.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+  
+  <!--Module checkListConsultants -->
+  <definition name="checkListConsultants" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/consultantCheckList/ConsultantCheckListHeader.jsp"/>
+      <put-attribute name="body"   value="/jsp/consultantCheckList/ConsultantCheckList.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>      
+  </definition>
+   <!--Module checkListUtility -->
+  <definition name="checkListUtility" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/utilityCheckList/UtilityCheckListHeaderContent.jsp"/>
+      <put-attribute name="body"   value="/jsp/utilityCheckList/UtilityCheckList.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>     
+  </definition>
+  
+   <!-- Module Reports -->
+  
+  <definition name="customerreport" extends="baseLayout">
+  	  <put-attribute name="headContent" value="/jsp/reports/customers/CustomerReportHeader.jsp"/>
+      <put-attribute name="body"   value="/jsp/reports/customers/CustomerReport.jsp"/>
+      <put-attribute name="menu"   value="/jsp/menu-ini.jsp"/>     
+  </definition>
+  
+</tiles-definitions>
