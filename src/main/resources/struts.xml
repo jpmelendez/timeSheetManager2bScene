@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<constant name="struts.devMode" value="true"></constant>
+<constant name="struts.enable.SlashesInActionNames" value="true" />
+<constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>
+<constant name="struts.xwork.chaining.copyErrors" value="true"/>
+<constant name="struts.xwork.chaining.copyMessages" value="true"/>
+ 
+<package name="default2bScene" namespace="/jsp" extends="struts-default">
+		<result-types>
+            <result-type name="tiles" default="true" class="org.apache.struts2.views.tiles.TilesResult"/>
+        </result-types>
+        
+        <interceptors>
+            <interceptor name="authentication"
+                class="com.twobScene.web.interceptors.AuthenticationInterceptor"></interceptor>
+            <interceptor-stack name="authStack">
+                <interceptor-ref name="authentication"></interceptor-ref>
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        
+        <default-interceptor-ref name="authStack"></default-interceptor-ref>
+        
+        
+        <global-results>
+            <result name="login" type="redirect">/jsp/login.jsp</result>
+            <result name="LOGOUT" type="redirect">/jsp/login.jsp</result>
+        </global-results>
+        
+    <action name="loginHome">
+    	<interceptor-ref name="defaultStack"></interceptor-ref>
+        <result name="success">/jsp/login.jsp</result>
+    </action>
+    <action name="loginUser" class="com.twobScene.web.action.LoginAction" method="execute">
+     <interceptor-ref name="params"/>
+     <interceptor-ref name="prepare"/>
+     <interceptor-ref name="basicStack"/> 
+    <result name="SUCCESS" type="tiles">welcome</result>
+    <result name="INPUT" type="tiles">loginError</result>
+    </action>
+    
+    <!-- Actions for Home -->
+    <action name="home" class="com.twobScene.web.action.LoginAction" method="home">
+    <interceptor-ref name="params"/>
+     <interceptor-ref name="prepare"/>
+     <interceptor-ref name="basicStack"/> 
+    <result name="SUCCESS" type="tiles">home</result>
+    <result name="ERROR" type="chain">loginHome</result>
+    </action>
+    
+    <!-- Actions for Home -->
+    <action name="logout" class="com.twobScene.web.action.LoginAction" method="logOut">
+    <interceptor-ref name="defaultStack"></interceptor-ref>
+    <result name="LOGOUT" type="tiles">loginTiles</result>
+    </action>
+    
+    
+ </package>
+ 
+  <!-- Action for Activity detail from home -->
+ <package name="activityDetail" namespace="/detail" extends="default2bScene">
+ 
+ <default-interceptor-ref name="authStack"></default-interceptor-ref>
+ 
+ 	<action name="detailedInfo" class="com.twobScene.web.action.HomeDetailActivityAction" method="detail">
+    <result name="SUCCESS" type="tiles">detailHome</result>
+    <result name="ERROR" type="tiles">loginError</result>
+    </action>
+    
+    
+ </package>
+ 
+ <!-- Action for CatalogStaff -->
+ <package name="captureStaff" namespace="/staff" extends="default2bScene">
+ 
+ <default-interceptor-ref name="authStack"></default-interceptor-ref>
+ 
+ 	<action name="staffIndex" class="com.twobScene.web.action.CatalogStaffAction" method="execute">
+    <result name="success" type="tiles">staff</result>
+    </action>
+ 
+    <action name="iniStaff" class="com.twobScene.web.action.CatalogStaffAction" method="newStaff">
+    <result name="success" type="tiles">newStaff</result>
+    </action>
+    
+     <action name="staffEditForm" class="com.twobScene.web.action.CatalogStaffAction" method="editStaff">
+    <result name="success" type="tiles">staffEditForm</result>
+    </action>
+    
+    <action name="updateStaff" class="com.twobScene.web.action.CatalogStaffAction" method="update">
+    <result name="success" type="chain">staffIndex</result>
+    <result name="error" type="tiles">editStaffError</result>
+    </action>
+    
+    <action name="addStaff" class="com.twobScene.web.action.CatalogStaffAction" method="add">
+    <result name="success" type="chain">staffIndex</result>
+    <result name="error" type="tiles">addStaffError</result>
+    </action>
+ 
+ 	<action name="deleteStaff" class="com.twobScene.web.action.CatalogStaffAction" method="delete">
+    <result name="success" type="chain">staffIndex</result>
+    <result name="error" type="tiles">addStaffError</result>
+    </action>
+ </package>
+ 
+  <!-- Action for Customers -->
+ <package name="captureClient" namespace="/customers" extends="default2bScene">
+ 
+ <default-interceptor-ref name="authStack"></default-interceptor-ref>
+ 
+ 	<action name="clientsIndex" class="com.twobScene.web.action.ClientsAction" method="execute">
+    <result name="success" type="tiles">clientsList</result>
+    </action>
+    
+    <action name="clientsForm" class="com.twobScene.web.action.ClientsAction" method="execute">
+    <result name="success" type="tiles">clientsForm</result>
+    </action>
+    
+     <action name="clientsEditForm" class="com.twobScene.web.action.ClientsAction" method="editClient">
+    <result name="success" type="tiles">clientsEditForm</result>
+    </action>
+ 
+    <action name="addClient" class="com.twobScene.web.action.ClientsAction" method="add">
+    <result name="success" type="chain">clientsIndex</result>
+    <result name="error" type="tiles">addClientsError</result>
+    </action>
+ 
+ 	<action name="updateClient" class="com.twobScene.web.action.ClientsAction" method="update">
+    <result name="success" type="chain">clientsIndex</result>
+    <result name="error" type="tiles">editClientsError</result>
+    </action>
+ 
+ 	<action name="deleteClient" class="com.twobScene.web.action.ClientsAction" method="delete">
+    <result name="success" type="chain">clientsIndex</result>
+    <result name="error" type="tiles">deleteClientsError</result>
+    </action>
+ </package>
+ 
+ <!-- Action for Project Categories -->
+ <package name="captureCategories" namespace="/categories" extends="default2bScene">
+ 
+ <default-interceptor-ref name="authStack"></default-interceptor-ref>
+ 
+ 	<action name="categoriesIndex" class="com.twobScene.web.action.CategoriesAction" method="execute">
+    <result name="success" type="tiles">categoriesList</result>
+    </action>
+    
+    <action name="categoriesForm" class="com.twobScene.web.action.CategoriesAction" method="execute">
+    <result name="success" type="tiles">categoriesForm</result>
+    </action>
+    
+     <action name="categoriesEditForm" class="com.twobScene.web.action.CategoriesAction" method="editCategory">
+    <result name="success" type="tiles">categoriesEditForm</result>
+    </action>
+ 
+    <action name="addCategory" class="com.twobScene.web.action.CategoriesAction" method="add">
+    <result name="success" type="chain">categoriesIndex</result>
+    <result name="error" type="tiles">categoriesError</result>
+    </action>
+    
+    <action name="updateCategory" class="com.twobScene.web.action.CategoriesAction" method="update">
+    <result name="success" type="chain">categoriesIndex</result>
+    <result name="error" type="tiles">editClientsError</result>
+    </action>
+ 
+ 	<action name="deleteCategory" class="com.twobScene.web.action.CategoriesAction" method="delete">
+    <result name="success" type="chain">categoriesIndex</result>
+    <result name="error" type="tiles">categoriesfError</result>
+    </action>
+ </package>
+ 
+  <!-- Action for Catalog Stages -->
+  <package name="CatalogStages" namespace="/stages" extends="default2bScene">
+  <default-interceptor-ref name="authStack"></default-interceptor-ref>
+ 
+ 	<action name="stagesIndex" class="com.twobScene.web.action.CatalogStagesAction" method="execute">
+    <result name="success" type="tiles">stages</result>
+    </action>
+ 
+  	<action name="iniStages" class="com.twobScene.web.action.CatalogStagesAction" method="newStage">
+    <result name="success" type="tiles">newStage</result>
+    </action>
+    
+    <action name="addStage" class="com.twobScene.web.action.CatalogStagesAction" method="add">
+    <result name="success" type="chain">stagesIndex</result>
+    <result name="error" type="tiles">categoriesError</result>
+    </action>
+ 
+ 	<action name="deleteStage" class="com.twobScene.web.action.CatalogStagesAction" method="delete">
+    <result name="success" type="chain">stagesIndex</result>
+    <result name="error" type="tiles">stagesError</result>
+    </action>
+    
+    <action name="stageEditForm" class="com.twobScene.web.action.CatalogStagesAction" method="editStage">
+    <result name="success" type="tiles">stageEditForm</result>
+    <result name="error" type="tiles">stageEditFormError</result>
+    </action>
+    
+    <action name="updateStage" class="com.twobScene.web.action.CatalogStagesAction" method="update">
+    <result name="success" type="chain">stagesIndex</result>
+    <result name="error" type="tiles">stagesIndexError</result>
+    </action>
+    
+ </package>
+  
+ <!-- Action for Catalog Tasks --> 
+  <package name="CatalogTask" namespace="/tasks" extends="default2bScene">
+  
+  <default-interceptor-ref name="authStack"></default-interceptor-ref>
+ 
+ 	<action name="tasksIndex" class="com.twobScene.web.action.CatalogTasksAction" method="getTasksByIDStage">
+    <result name="success" type="tiles">tasks</result>
+    </action>
+    
+    <action name="iniTasks" class="com.twobScene.web.action.CatalogTasksAction" method="newTask">
+    <result name="success" type="tiles">newTask</result>
+    </action>
+ 
+    <action name="addTasks" class="com.twobScene.web.action.CatalogTasksAction" method="add">
+    <result name="success" type="chain">tasksIndex</result>
+    <result name="error" type="tiles">tasksError</result>
+    </action>
+ 
+ 	<action name="deleteTasks" class="com.twobScene.web.action.CatalogTasksAction" method="delete">
+    <result name="success" type="chain">tasksIndex</result>
+    <result name="error" type="tiles">tasksError</result>
+    </action>
+    
+    <action name="taskEditForm" class="com.twobScene.web.action.CatalogTasksAction" method="editTask">
+    <result name="success" type="tiles">taskEditForm</result>
+    <result name="error" type="tiles">taskEditFormError</result>
+    </action>
+    
+    <action name="updateTask" class="com.twobScene.web.action.CatalogTasksAction" method="update">
+    <result name="success" type="chain">tasksIndex</result>
+    <result name="error" type="tiles">tasksError</result>
+    </action>
+    
+ </package>
+ 
+  <!-- Action for Catalog Activities --> 
+  <package name="CatalogActivity" namespace="/activities" extends="default2bScene">
+  <default-interceptor-ref name="authStack"></default-interceptor-ref>
+ 
+ 	<action name="activitiesIndex" class="com.twobScene.web.action.CatalogActivitiesAction" method="execute">
+    <result name="success" type="tiles">activities</result>
+    </action>
+ 
+ 	<action name="iniActivities" class="com.twobScene.web.action.CatalogActivitiesAction" method="newActivity">
+    <result name="success" type="tiles">newActivity</result>
+    </action>
+ 
+    <action name="addActivity" class="com.twobScene.web.action.CatalogActivitiesAction" method="add">
+    <result name="success" type="chain">activitiesIndex</result>
+    <result name="error" type="tiles">activitiesError</result>
+    </action>
+ 
+ 	<action name="deleteActivity" class="com.twobScene.web.action.CatalogActivitiesAction" method="delete">
+    <result name="success" type="chain">activitiesIndex</result>
+    <result name="error" type="tiles">activitiesError</result>
+    </action>
+    
+    <action name="activityEditForm" class="com.twobScene.web.action.CatalogActivitiesAction" method="editActivity">
+    <result name="success" type="tiles">activityEditForm</result>
+    <result name="error" type="tiles">activityEditFormError</result>
+    </action>
+    
+    <action name="updateActivity" class="com.twobScene.web.action.CatalogActivitiesAction" method="update">
+    <result name="success" type="chain">activitiesIndex</result>
+    <result name="error" type="tiles">activitiesError</result>
+    </action>
+ </package>
+ 
+ 
+ <!-- Actions for add new Project -->
+ <package name="projects" namespace="/project" extends="default2bScene">
+ <default-interceptor-ref name="authStack"></default-interceptor-ref>
+ 
+ 	<action name="overviewProjects" class="com.twobScene.web.action.CaptureProjectAction" method="showAllProjects">
+    <result name="success" type="tiles">overviewProjects</result>
+    <result name="error" type="tiles">projectError</result>
+    </action>
+    
+    <action name="deleteProject" class="com.twobScene.web.action.CaptureProjectAction" method="delete">
+    <result name="success" type="chain">overviewProjects</result>
+    <result name="error" type="tiles">projectError</result>
+    </action>
+ 	
+ 	<action name="captureProject" class="com.twobScene.web.action.CaptureProjectAction">
+    <result name="success" type="tiles">captureProject</result>
+    <result name="error" type="tiles">loginError</result>
+    </action>
+    
+    <action name="addProject" class="com.twobScene.web.action.CaptureProjectAction" method="add">
+    <result name="success" type="tiles">showInfo</result>
+    <result name="error" type="tiles">viewProjectError</result>
+    </action>
+    
+    <action name="projectEditForm" class="com.twobScene.web.action.CaptureProjectAction" method="getProject">
+    <result name="success" type="tiles">projectEditForm</result>
+    </action>
+    
+    <action name="updateProject" class="com.twobScene.web.action.CaptureProjectAction" method="update">
+    <result name="success" type="tiles">showInfo</result>
+    <result name="error" type="tiles">editClientsError</result>
+    </action>
+    
+    <!-- <action name="viewProject" class="com.twobScene.web.action.CaptureProjectAction" method="getProject">
+    <result name="success" type="tiles">infoProject</result>
+    <result name="error" type="tiles">viewProjectError</result>
+    </action>  -->
+    
+    <action name="searchGeneral" class="com.twobScene.web.action.CaptureProjectAction" method="searchGeneralProject">
+    <result name="success" type="tiles">searchGeneral</result>
+    <result name="error" type="tiles">projectError</result>
+    </action>
+    
+ </package>
+ 
+ <!-- Actions for Overview Project -->
+ <package name="overviewProjects" namespace="/overviewProjects" extends="default2bScene">
+ <default-interceptor-ref name="authStack"></default-interceptor-ref>
+    
+ </package>
+ 
+ <!-- Action for project manager -->
+ <package name="projectManager" namespace="/manager" extends="default2bScene">
+ 	<action name="mainManager" class="com.twobScene.web.action.MainProjectManagerAction" method="execute">
+    <result name="success" type="tiles">mainManagerPage</result>
+    <result name="ERROR" type="tiles">mainManagerPageError</result>
+    </action> 
+    <action name="saveAdditionalData" class="com.twobScene.web.action.MainProjectManagerAction" method="saveAdditionalInfo">
+    <result name="success" type="tiles">mainManagerPage</result>
+    <result name="ERROR" type="tiles">mainManagerPageError</result>
+    </action> 
+    
+ </package>
+ 
+ <!-- Actions for add project tasks -->
+ <package name="projectTasks" namespace="/projectTasks" extends="default2bScene">
+ <default-interceptor-ref name="authStack"></default-interceptor-ref>
+ 
+    <action name="searchProjects" class="com.twobScene.web.action.ProjectActivityAction" method="searchProject">
+    <result name="success" type="tiles">searchProjects</result>
+    <result name="error" type="tiles">searchprojectError</result>
+    </action>
+    
+    <action name="searchEditProjects" class="com.twobScene.web.action.ProjectActivityAction" method="searchProject">
+    <result name="success" type="tiles">searchEditProjects</result>
+    <result name="error" type="tiles">searchEditprojectError</result>
+    </action>
+    
+    <action name="addProjectActivity" class="com.twobScene.web.action.ProjectActivityAction" method="execute">
+    <result name="success" type="tiles">selectActivities</result>
+    <result name="error" type="tiles">selectActivitiesError</result>
+    </action>
+    
+    <action name="editListPTasks" class="com.twobScene.web.action.ProjectActivityAction" method="editList">
+    <result name="success" type="tiles">mainManagerPage</result>
+    <result name="error" type="tiles">errorProjectActivity</result>
+    </action>
+    
+    <action name="editMain" class="com.twobScene.web.action.ProjectActivityAction" method="editMain">
+    <result name="success" type="tiles">editListActivities</result>
+    <result name="error" type="tiles">errorProjectActivity</result>
+    </action>
+    
+    <action name="showActivity" class="com.twobScene.web.action.ProjectActivityAction" method="showEditActivity">
+    <result name="success" type="tiles">editProjectActivity</result>
+    <result name="error" type="tiles">errorEditProjectActivity</result>
+    </action>
+    
+    <action name="updateActivity" class="com.twobScene.web.action.ProjectActivityAction" method="updateProjectActivity">
+    <result name="success" type="tiles">updateProjectActivity</result>
+    <result name="error" type="tiles">errorUpdateProjectActivity</result>
+    </action>
+    
+    
+ </package>
+ 
+ <!-- Actions for Time Sheet Manager -->
+ <package name="timeSheet" namespace="/timeSheet" extends="default2bScene">
+ 
+ <default-interceptor-ref name="authStack"></default-interceptor-ref>
+ 
+ 
+ 	<action name="timeSheetHome" class="com.twobScene.web.action.TimeTrackingAction" method="execute">
+    <result name="success" type="tiles">timeSheetStart</result>
+    <result name="error" type="tiles">timeSheetStartError</result>
+    </action>
+    
+    <action name="timeSheetListActivities" class="com.twobScene.web.action.TimeTrackingAction" method="showProjectTaskList">
+    <result name="success" type="tiles">timeSheetListActivities</result>
+    <result name="error" type="tiles">timeSheetListActivitiesError</result>
+    </action>
+    
+    <action name="timeSheetForm" class="com.twobScene.web.action.TimeTrackingAction" method="timeSheetSubmitForm">
+    <result name="success" type="tiles">timeSheetSubmitForm</result>
+    <result name="error" type="tiles">timeSheetSubmitFormError</result>
+    </action>
+    
+    <action name="timeSheetAddUpdate" class="com.twobScene.web.action.TimeTrackingAction" method="AddOrUpdateTime">
+    <result name="success" type="chain">timeSheetHome</result>
+    <result name="error" type="tiles">timeSheetAddUpdateError</result>
+    </action>
+    
+    <action name="timeSheetShowTimes" class="com.twobScene.web.action.TimeTrackingAction" method="ShowActivityTimes">
+    <result name="success" type="tiles">timeSheetTimeList</result>
+    <result name="error" type="tiles">timeSheetTimeListError</result>
+    </action>
+    
+    <action name="timeSheetPerDay" class="com.twobScene.web.action.TimeTrackingAction" method="timesSheetsperDay">
+    <result name="success" type="tiles">timeSheetTimeDay</result>
+    <result name="error" type="tiles">timeSheetTimeListError</result>
+    </action>
+    
+    <action name="timeSheetAddUpdatePerDay" class="com.twobScene.web.action.TimeTrackingAction" method="AddOrUpdateTime">
+    <result name="success" type="chain">timeSheetPerDay</result>
+    <result name="error" type="tiles">timeSheetAddUpdateError</result>
+    </action>
+    
+    
+ </package>
+ 
+  <!-- Action for Consultant -->
+ <package name="consultant" namespace="/consultant" extends="default2bScene">
+ 	<default-interceptor-ref name="authStack"></default-interceptor-ref>
+ 	
+    
+    <action name="checkListHome" class="com.twobScene.web.action.ConsultantChecklistAction" method="execute">
+    <result name="success" type="tiles">checkListConsultants</result>
+    </action>
+    
+    <action name="saveCheckList" class="com.twobScene.web.action.ConsultantChecklistAction" method="saveUpdateCheckList">
+    <result name="success" type="chain">checkListHome</result>
+    </action>
+    
+    <action name="deleteCheckList" class="com.twobScene.web.action.ConsultantChecklistAction" method="deleteCheckList">
+    <result name="success" type="chain">checkListHome</result>
+    </action>
+ </package>
+ 
+ <!-- Action for Utility -->
+ <package name="utility" namespace="/utility" extends="default2bScene">
+ 	<default-interceptor-ref name="authStack"></default-interceptor-ref>
+    
+    <action name="utilityCheckListHome" class="com.twobScene.web.action.UtilityCheckListAction" method="execute">
+    <result name="success" type="tiles">checkListUtility</result>
+    </action>
+    
+    <action name="saveUtilityCheckList" class="com.twobScene.web.action.UtilityCheckListAction" method="saveUpdateCheckList">
+    <result name="success" type="chain">utilityCheckListHome</result>
+    </action>
+    
+    <action name="deleteUtilityCheckList" class="com.twobScene.web.action.UtilityCheckListAction" method="deleteUtilityCheckList">
+    <result name="success" type="chain">utilityCheckListHome</result>
+    </action>
+ </package>
+ 
+ 
+  <!-- Action for Reports -->
+ <package name="reports" namespace="/reports" extends="default2bScene">
+ <default-interceptor-ref name="authStack"></default-interceptor-ref>
+    
+    <action name="customerReport" class="com.twobScene.web.action.ReportsAction" method="getCustomers">
+    <result name="success" type="tiles">customerreport</result>
+    </action>
+ 
+ </package>
+ 
+ <!-- Json Package -->
+ 
+ <package name="default" namespace="/" extends="json-default">
+ <interceptors>
+            <interceptor-stack name="defaultStack">
+                <interceptor-ref name="json">
+                    <param name="enableSMD">true</param>
+                </interceptor-ref>
+            </interceptor-stack>
+ </interceptors>
+        <default-interceptor-ref name="defaultStack" />
+ <action name="readStages" class="com.twobScene.web.action.AjaxAction" method="readStages">
+	<result type="json"></result>
+	<param name="noCache">true</param>
+    <param name="excludeNullProperties">true</param>
+    <param name="root">listStages</param>
+</action>
+
+<action name="readTasks" class="com.twobScene.web.action.AjaxAction" method="readTasks">
+	<result type="json"></result>
+	<param name="noCache">true</param>
+    <param name="excludeNullProperties">true</param>
+    <param name="root">listTasks</param>
+</action>
+
+<action name="readActivities" class="com.twobScene.web.action.AjaxAction" method="readActivities">
+	<result type="json"></result>
+	<param name="noCache">true</param>
+    <param name="excludeNullProperties">true</param>
+    <param name="root">listActivities</param>
+</action>
+<action name="getWeekTimes" class="com.twobScene.web.action.AjaxAction" method="readWeekData">
+	<result type="json"></result>
+	<param name="noCache">true</param>
+    <param name="excludeNullProperties">true</param>
+    <param name="root">listActivities</param>
+</action>
+<action name="updatePhase" class="com.twobScene.web.action.AjaxAction" method="updateProjectPhase">
+		<result type="json"></result>
+		<param name="noCache">true</param>
+	    <param name="root">jsonDataTmp</param>
+	    <param name="excludeNullProperties">true</param>
+	</action>
+	
+	<action name="refreshOverviewTables" class="com.twobScene.web.action.AjaxAction" method="refreshTablesOverviewProject">
+		<result type="json"></result>
+		<param name="noCache">true</param>
+	    <param name="root">jsonDataTmp</param>
+	    <param name="excludeNullProperties">true</param>
+	</action>
+<action name="searchGeneralJson" class="com.twobScene.web.action.AjaxAction" method="searchGeneral">
+		<result type="json"></result>
+		<param name="noCache">true</param>
+	    <param name="root">jsonDataTmp</param>
+	    <param name="excludeNullProperties">true</param>
+	</action>
+	
+	 <action name="readActivity" class="com.twobScene.web.action.AjaxAction" method="readActivityByID">
+		<result type="json"></result>
+	    <param name="root">activityDataJson</param>
+	    <param name="noCache">true</param>
+	    <param name="excludeNullProperties">true</param>
+	</action>
+	<action name="updateActivity" class="com.twobScene.web.action.AjaxAction" method="updateMappedActivity">
+		<result type="json"></result>
+		<param name="noCache">true</param>
+	    <param name="root">jsonDataTmp</param>
+	    <param name="excludeNullProperties">true</param>
+	</action>
+	
+ 
+ </package>
+ 
+ 
+ 
+</struts>

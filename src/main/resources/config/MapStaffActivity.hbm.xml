@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/08/2015 11:38:47 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.twobScene.web.model.MapStaffActivity" table="map_staff_activity">
+        <id name="mapStaffActID" type="java.lang.Long">
+            <column name="MAP_SA_ID" />
+            <generator class="increment" />
+        </id>
+        <property name="mapProjectActID" type="java.lang.Long">
+            <column name="MAP_PA_ID" />
+        </property>
+        <property name="staffID" type="java.lang.Long">
+            <column name="P_CHARGE_ID" />
+        </property>
+        <property name="createdDate" type="java.util.Date">
+            <column name="CREATED_DATE" />
+        </property>
+    </class>
+</hibernate-mapping>

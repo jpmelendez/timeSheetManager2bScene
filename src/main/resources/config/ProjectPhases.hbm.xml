@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/03/2016 1:17:13 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.twobScene.web.model.ProjectPhases" table="project_phase">
+        <id name="projectPhaseID" type="java.lang.Long">
+            <column name="PROJECT_PHASE_ID" />
+            <generator class="increment" />
+        </id>
+        <property name="phaseID" type="java.lang.Long">
+            <column name="PHASE_ID" />
+        </property>
+        <property name="projectID" type="java.lang.Long">
+            <column name="PROJECT_ID" />
+        </property>
+        <property name="phaseLapseDate" type="java.util.Date">
+            <column name="PHASE_LAPSE_DATE" />
+        </property>
+        <property name="timeLapseWeeks" type="java.lang.Integer">
+            <column name="TIME_LAPSE_WEEKS" />
+        </property>
+        <property name="phaseNotes" type="java.lang.String">
+            <column name="PHASE_NOTE" />
+        </property>
+        <property name="phaseDone" type="java.lang.Boolean">
+            <column name="PHASE_DONE" />
+        </property>
+        <property name="createdDate" type="java.util.Date">
+            <column name="CREATED_DATE" />
+        </property>
+    </class>
+</hibernate-mapping>

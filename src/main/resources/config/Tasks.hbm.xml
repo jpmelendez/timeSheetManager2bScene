@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/06/2015 7:34:32 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.twobScene.web.model.Tasks" table="c_tasks">
+        <id name="taskID" type="java.lang.Long">
+            <column name="TASK_ID" />
+            <generator class="increment" />
+        </id>
+        <property name="stageID" type="java.lang.Long">
+            <column name="STAGE_ID" />
+        </property>
+        <property name="taskName" type="java.lang.String">
+            <column name="TASK_NAME" />
+        </property>
+        <property name="taskDescription" type="java.lang.String">
+            <column name="TASK_DESCRIPTON" />
+        </property>
+        <property name="taskPriority" type="java.lang.Integer">
+            <column name="TASK_PRIORITY" />
+        </property>
+        <property name="createdDate" type="java.util.Date">
+            <column name="CREATED_DATE" />
+        </property>
+    </class>
+</hibernate-mapping>

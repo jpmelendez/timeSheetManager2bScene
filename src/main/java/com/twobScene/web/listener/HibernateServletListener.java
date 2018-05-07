@@ -1,0 +1,40 @@
+package com.twobScene.web.listener;
+
+import java.net.URL;
+
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+
+public class HibernateServletListener implements ServletContextListener {
+
+	 @Override
+	    public void contextDestroyed(ServletContextEvent sce) {
+	        SessionFactory sf = (SessionFactory) sce.getServletContext().getAttribute("SessionFactory");
+	        sf.close();
+	        System.out.println("Database connection closed for Application.");
+	    }
+	 
+	    @Override
+	    public void contextInitialized(ServletContextEvent sce) {
+	    	
+	    	try {
+	    		URL url = HibernateServletListener.class.getResource("/hibernate.cfg.xml");
+		        Configuration config = new Configuration();
+		        config.configure(url);
+		        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+		                        .applySettings(config.getProperties()).build();
+		        SessionFactory sf = config.buildSessionFactory(serviceRegistry);
+		        sce.getServletContext().setAttribute("SessionFactory", sf);
+		        System.out.println("Database connection initialized for Application.");
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+	        
+	    }
+
+}

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/07/2015 1:03:40 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.twobScene.web.model.ProjectActivity" table="map_projects_activity">
+       
+        <id name="projectActivityID" type="java.lang.Long">
+            <column name="MAP_PA_ID" />
+            <generator class="increment" />
+        </id>
+        <property name="projectID" type="java.lang.Long">
+            <column name="PROJECT_ID" />
+        </property>
+        <property name="stageID" type="java.lang.Long">
+            <column name="STAGE_ID" />
+        </property>
+        <property name="taskID" type="java.lang.Long">
+            <column name="TASK_ID" />
+        </property>
+        <property name="actID" type="java.lang.Long">
+            <column name="ACT_ID" />
+        </property>
+        <property name="statusID" type="java.lang.Long">
+            <column name="STATUS_TASK_ID" />
+        </property>
+        <property name="descPA" type="java.lang.String">
+            <column name="DESC_MAP_PA" />
+        </property>
+        <property name="priorityPA" type="java.lang.String">
+            <column name="PRIORITY_MAP_PA" />
+        </property>
+        <property name="progress" type="java.lang.Integer">
+            <column name="PROGRESS" />
+        </property>
+        <property name="startDate" type="java.util.Date">
+            <column name="START_DATE" />
+        </property>
+        <property name="dueDate" type="java.util.Date">
+            <column name="DUE_DATE" />
+        </property>
+        <property name="estimatedHrs" type="java.lang.Integer">
+            <column name="ESTIMATED_TIME_HRS" />
+        </property>
+        <property name="estimatedMin" type="java.lang.Integer">
+            <column name="ESTIMATED_TIME_MIN" />
+        </property>
+        <property name="dependancyID" type="java.lang.Long">
+            <column name="DEPENDENCY_ID" />
+        </property>
+        <property name="staffInCharge" type="java.lang.Long">
+            <column name="P_CHARGE_ID" />
+        </property>
+        <property name="checkedPA" type="java.lang.Boolean">
+            <column name="PA_CHECKED" />
+        </property>
+        <property name="activityDone" type="java.lang.Boolean">
+            <column name="ACTIVITY_DONE" />
+        </property>
+        <property name="createdDate" type="java.util.Date">
+            <column name="CREATED_DATE" />
+        </property>
+    </class>
+</hibernate-mapping>

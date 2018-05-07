@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10/11/2015 12:54:45 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.twobScene.web.model.MapProjectUser" table="map_project_user">
+        <id name="pChargeID" type="java.lang.Long" access="field">
+            <column name="P_CHARGE_ID" />
+        </id>
+        <property name="projectID" type="java.lang.Long">
+            <column name="PROJECT_ID" />
+        </property>
+        <property name="mapUserStatus" type="java.lang.String">
+            <column name="MAP_USER_STAT" />
+        </property>
+        <property name="createdDate" type="java.util.Date">
+            <column name="CREATED_DATE" />
+        </property>
+    </class>
+</hibernate-mapping>

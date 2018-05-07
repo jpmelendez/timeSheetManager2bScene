@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27/05/2015 7:29:07 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.twobScene.web.model.Projects" table="projects">
+        <id name="projectID" type="java.lang.Long">
+            <column name="PROJECT_ID" />
+            <generator class="increment" />
+        </id>
+        <property name="companyID" type="java.lang.Long">
+            <column name="COMPANY_ID" />
+        </property>
+        <property name="projectStatus" type="java.lang.String">
+            <column name="STATE" />
+        </property>
+        <property name="numberOfEandA" type="java.lang.Integer">
+            <column name="NUMBER_OF_EA" />
+        </property>
+        <property name="projectCatID" type="java.lang.Long">
+            <column name="CATEGORY_ID" />
+        </property>
+        <property name="projectName" type="java.lang.String">
+            <column name="PROJECT_NAME" />
+        </property>
+        <property name="projectDescription" type="java.lang.String">
+            <column name="DESCRIPTION" />
+        </property>
+        <property name="shortName" type="java.lang.String">
+            <column name="SHORT_NAME" />
+        </property>
+        <property name="budget" type="java.math.BigDecimal">
+            <column name="BUDGET" />
+        </property>
+        <property name="projectTime" type="java.lang.Integer">
+            <column name="PROJECT_TIME" />
+        </property>
+        <property name="masurementTime" type="java.lang.String">
+            <column name="MASUREMENT_TIME" />
+        </property>
+        <property name="hoursSpend" type="java.lang.Integer">
+            <column name="HOURS_SPEND" />
+        </property>
+        <property name="startDate" type="java.util.Date">
+            <column name="START_DATE" />
+        </property>
+        <property name="dueDate" type="java.util.Date">
+            <column name="DUE_DATE" />
+        </property>
+        <property name="priority" type="java.lang.String">
+            <column name="PRIORITY" />
+        </property>
+        <property name="staffID" type="java.lang.Long">
+            <column name="P_CHARGE_ID" />
+        </property>
+         <property name="clientID" type="java.lang.Long">
+            <column name="CLIENT_ID" />
+        </property>
+        <property name="councilName" type="java.lang.String">
+            <column name="COUNCIL_NAME" />
+        </property>
+        <property name="councilPh" type="java.lang.String">
+            <column name="COUNCIL_PH" />
+        </property>
+        <property name="councilEmail" type="java.lang.String">
+            <column name="COUNCIL_EMAIL" />
+        </property>
+        <property name="photoSite" type="java.lang.Boolean">
+            <column name="PHOTO_SITE" />
+        </property>
+        <property name="phaseId" type="java.lang.Integer">
+            <column name="PHASE_ID" />
+        </property>
+        <property name="rfiCondition" type="java.util.Date">
+            <column name="RFI_CONDITION" />
+        </property>
+        <property name="rfiConditionWeeks" type="java.lang.Integer">
+            <column name="RFI_CONDITION_WEEKS" />
+        </property>
+        <property name="council" type="java.lang.String">
+            <column name="COUNCIL" />
+        </property>
+        <property name="councilReference" type="java.lang.String">
+            <column name="COUNCIL_REFERENCE" />
+        </property>
+        <property name="councilNote" type="java.lang.String">
+            <column name="COUNCIL_NOTE" />
+        </property>
+        <property name="boxArchive" type="java.lang.String">
+            <column name="BOX_ARCHIVE" />
+        </property>
+        <property name="wdStartDate" type="java.util.Date">
+            <column name="WD_START_DATE" />
+        </property>
+        <property name="wdDueDate" type="java.util.Date">
+            <column name="WD_DUE_DATE" />
+        </property>
+        <property name="wdFinishJob" type="java.lang.Integer">
+            <column name="WD_FINISHJOB_WEEKS" />
+        </property>
+        <property name="wdProjectTime" type="java.lang.Integer">
+            <column name="WD_PTIME_HRS" />
+        </property>
+        <property name="vcatStartDate" type="java.util.Date">
+            <column name="VCAT_START_DATE" />
+        </property>
+        <property name="vcatDueDate" type="java.util.Date">
+            <column name="VCAT_DUE_DATE" />
+        </property>
+        <property name="vcatFinishJob" type="java.lang.Integer">
+            <column name="VCAT_FINISHJOB_WEEKS" />
+        </property>
+        <property name="vcatProjectTime" type="java.lang.Integer">
+            <column name="VCAT_PTIME_HRS" />
+        </property>
+        <property name="insertTime" type="java.util.Date">
+            <column name="INSERT_TIME" />
+        </property>
+    </class>
+</hibernate-mapping>

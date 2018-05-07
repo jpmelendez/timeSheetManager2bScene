@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13/06/2016 11:22:31 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.twobScene.web.model.TimeTracking" table="time_tracking">
+        <id name="trackID" type="java.lang.Long">
+            <column name="TRACK_ID" />
+            <generator class="increment" />
+        </id>
+        <property name="mapPAID" type="java.lang.Long">
+            <column name="MAP_PA_ID" />
+        </property>
+        <property name="pChargeID" type="java.lang.Long" access="field">
+            <column name="P_CHARGE_ID" />
+        </property>
+        <property name="trackingDate" type="java.util.Date">
+            <column name="TRACKING_DATE" />
+        </property>
+        <property name="trackingTime" type="java.sql.Time">
+            <column name="TRACKING_TIME" />
+        </property>
+        <property name="trackTimeDec" type="java.lang.Double">
+            <column name="TRACK_TIME_HRS" />
+        </property>
+        <property name="trackingTimeMin" type="java.lang.Integer">
+            <column name="TRACK_TIME_MIN" />
+        </property>
+        <property name="trackingNote" type="java.lang.String">
+            <column name="TRACKING_NOTE" />
+        </property>
+        <property name="trackingApproved" type="java.lang.Boolean">
+            <column name="TRACK_APPROVED" />
+        </property>
+        <property name="createdDate" type="java.util.Date">
+            <column name="CREATED_DATE" />
+        </property>
+        <property name="createdUser" type="java.lang.String">
+            <column name="CREATED_USERNAME" />
+        </property>
+    </class>
+</hibernate-mapping>

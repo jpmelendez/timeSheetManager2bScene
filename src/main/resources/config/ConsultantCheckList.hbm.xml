@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/05/2016 4:47:42 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.twobScene.web.model.ConsultantCheckList" table="consultant_checklist">
+        <id name="conCheckListID" type="java.lang.Long">
+            <column name="CON_CHECKLIST_ID" />
+            <generator class="increment" />
+        </id>
+        <property name="consultantID" type="java.lang.Long">
+            <column name="CONSULTANT_ID" />
+        </property>
+        <property name="projectID" type="java.lang.Long">
+            <column name="PROJECT_ID" />
+        </property>
+        <property name="mapProjectActID" type="java.lang.Long">
+            <column name="MAP_PA_ID" />
+        </property>
+        <property name="ccRequired" type="java.lang.Integer">
+            <column name="CC_REQUIRED" />
+        </property>
+        <property name="ccQuote" type="java.lang.Float">
+            <column name="CC_QUOTE" />
+        </property>
+         <property name="quoteGST" type="java.lang.Integer">
+            <column name="CC_QUOTE_GST" />
+        </property>
+        <property name="ccDateStart" type="java.util.Date">
+            <column name="CC_DATE_START" />
+        </property>
+        <property name="ccApproved" type="java.lang.Integer">
+            <column name="CC_APPROVED" />
+        </property>
+        <property name="ccAlertDate" type="java.util.Date">
+            <column name="CC_ALERT_DATE" />
+        </property>
+        <property name="ccNote" type="java.lang.String">
+            <column name="CC_NOTE" />
+        </property>
+        <property name="ccPreliminary" type="java.lang.Integer">
+            <column name="CC_PRELIMINARY" />
+        </property>
+        <property name="ccFinal" type="java.lang.Integer">
+            <column name="CC_FINAL" />
+        </property>
+        <property name="ccDateReceived" type="java.util.Date">
+            <column name="CC_DATE_RECEIVED" />
+        </property>
+        <property name="ccCreatedDate" type="java.util.Date">
+            <column name="CREATED_DATE" />
+        </property>
+    </class>
+</hibernate-mapping>

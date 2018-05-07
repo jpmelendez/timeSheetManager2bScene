@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+    	
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+       ty name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+<!-- Connection Pool Size -->
+    <!--   <property name="hibernate.connection.pool_size">10</property>	-->
+      
+		      <!-- C3p0 connection pool -->
+		     
+		<property name="c3p0.min_size">5</property>
+		<property name="c3p0.max_size">20</property>
+		<property name="c3p0.timeout">1800</property>
+		<property name="c3p0.max_statements">50</property>
+		<property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+		
+	
+		<!-- no "connection.pool_size" entry! -->
+         
+        <!-- org.hibernate.HibernateException: No CurrentSessionContext configured! -->
+        <property name="hibernate.current_session_context_class">thread</property>
+         
+        <!-- Disable the second-level cache -->
+        <property name="hibernate.cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+        <!-- Outputs the SQL queries, should be disabled in Production -->
+        <property name="hibernate.show_sql">true</property>
+         
+ 
+        <!-- mapping file, we can use Bean annotations too -->
+           <mapping resource="config/User.hbm.xml" />
+        <mapping resource="config/C_Person_Charge.hbm.xml" />
+        <mapping resource="config/Categories.hbm.xml" />
+        <mapping resource="config/Clients.hbm.xml" />
+        <mapping resource="config/Projects.hbm.xml" />
+        <mapping resource="config/Stages.hbm.xml" />
+        <mapping resource="config/Tasks.hbm.xml" />
+        <mapping resource="config/Activity.hbm.xml" />
+        <mapping resource="config/ProjectActivity.hbm.xml" />
+        <mapping resource="config/MapStaffActivity.hbm.xml"/>
+        <mapping resource="config/ProjectActivityStatus.hbm.xml"/>
+        <mapping resource="config/MapProjectUser.hbm.xml" />
+         <mapping resource="config/CatalogPhases.hbm.xml"/>
+        <mapping resource="config/MapProjectPersonCharge.hbm.xml"/>
+        <mapping resource="config/ProjectPhases.hbm.xml" />
+         <mapping resource="config/CatalogConsultant.hbm.xml" />
+         <mapping resource="config/ConsultantCategories.hbm.xml" />
+         <mapping resource="config/ConsultantCheckList.hbm.xml" />
+         <mapping resource="config/TimeTracking.hbm.xml" />
+         <mapping resource="config/Alerts.hbm.xml" />
+         <mapping resource="config/UtilityCheckListe.hbm.xml" />
+         <mapping resource="config/UtilityCategory.hbm.xml" />
+         <mapping resource="config/Utility.hbm.xml" />
+         
+    </session-factory>
+</hibernate-configuration>
